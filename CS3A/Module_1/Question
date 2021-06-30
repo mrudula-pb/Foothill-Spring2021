@@ -1,0 +1,68 @@
+This assignment was locked Apr 14 at 11:59pm.
+Objective
+
+demonstrate an understanding of:
+
+The main() function
+print()
+input()
+String concatenation
+PEP-8 conventions
+docstrings
+Specification
+
+Your program should ask the user for their name.  It should then respond with a friendly greeting, using the user's name.
+
+Other Requirements
+
+Your code should use the if __name__ == "__main__" pattern shown in the modules.
+
+All other statements should be in the main() function.
+
+Input and output should be well organized, with correct spacing and punctuation.
+
+There should be a module level docstring, and a docstring for main().  The docstring for main() should be a complete command-form sentence.
+
+Follow the PEP-8 conventions you have learned so far.
+
+Sample Run (your output can be different as long as it meets the criteria above)
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Docstrings are missing
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Docstrings are present but might not follow conventions.
+
+Sample run included
+
+Program produces correct output with no errors.
+
+There are no statements at the module level (except if __name__ == "__main__")
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Module level Docstring and Docstring for every function, as described in the modules.
+
+Variable names are descriptive.
+
+Sample run included
