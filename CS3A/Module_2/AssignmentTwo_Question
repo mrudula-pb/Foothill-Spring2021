@@ -1,0 +1,32 @@
+Objective
+
+demonstrate an understanding of:
+
+Numeric data types
+Conversion from str to integer
+Exception Handling
+If/Elif/Else
+Specification
+
+Start with your code from assignment one, and add two functions:
+
+print_menu() consists only of print statements, and prints out the nine choices shown in the sample run below.  Be sure to include the numbers, this is how the user will select their option.
+
+menu() will do three things, in this order:
+
+call the print_menu() function to print out the options.
+Ask the user to input an option.  Convert the user input to an integer (catch the error if the user enters something that cannot be converted).
+Take action based on the user input.  Note that we haven't coded ANY of the needed options yet, so we will just give a unique polite message for each selection.  The user should receive a different message for each selection.
+menu() is called from main(), right after the polite greeting is complete.  You already coded the polite greeting in Assignment One.
+
+Other Requirements
+
+Input and output should be well organized, with correct spacing and punctuation.  Style counts!
+
+There should be a module level docstring, and a docstring for every function.
+
+Follow the PEP-8 conventions you have learned so far.
+
+Your sample run does not have to show ALL options, but should at least show what happens in at least two cases where the user chooses a valid option, one case where the user types an invalid integer, and one case where the user types something other than an integer.  Since we haven't studied loops yet, you will have to run the program several times.
+
+Sample Run (your output can be different as long as it meets the criteria above)
