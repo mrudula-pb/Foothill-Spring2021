@@ -1,0 +1,137 @@
+Objective
+
+Demonstrate an understanding of:
+
+While Loops
+Break and Continue
+Specification
+
+Start with your code from assignment two.
+
+Modify the menu() function as follows:
+
+Printing of the menu and asking for user input should be in a loop, so the user can continue making other selections.  This should be accomplished with a while loop.  Be careful that you do not call menu() from inside the menu() function!
+Modify the try/except/else section so there is not an else block (it is fine to have other else blocks in the function).  There's nothing wrong with the way we coded this in assignment two, but it is more common to skip the else block in a case like this.  Be careful, though, we also can't continue execution if the user entered a string rather than a variable.  Think about everything we learned about while loops, and figure out a way to skip the rest of the statements without exiting the loop.
+Modify selection 9 so that it exits the loop and says goodbye to the user.  You should use keywords we have learned related to loops.  You should not use something like return or sys.exit()...we haven't learned about those yet.
+Other Requirements
+
+Same as assignment two...
+
+Input and output should be well organized, with correct spacing and punctuation.  Style counts!
+
+There should be a module level docstring, and a docstring for every function.
+
+Follow the PEP-8 conventions you have learned so far.
+
+Your sample run does not have to show ALL options, but should at least show what happens in at least two cases where the user chooses a valid option, one case where the user types an invalid integer, and one case where the user types something other than an integer.
+
+Sample Run (your output can be different as long as it meets the criteria above)
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 1
+Average rent functionality is not implemented yet
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 2
+Minimum rent functionality is not implemented yet
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? e
+Please enter a number only
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 10
+Please enter a number between 1 and 9
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 9
+Goodbye!  Thank you for using the database
+
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Docstrings are missing
+
+menu() is called within the menu() function
+
+sys.exit() or return used to exit the loop
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Docstrings are present but might not follow conventions.
+
+Sample run included
+
+Program produces correct output with no errors.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Module level Docstring and Docstring for every function, as described in the modules.
+
+Variable names are descriptive.
+
+While/continue/break used where appropriate.
+
+Sample run included showing behavior under various cases.
+
+
+
