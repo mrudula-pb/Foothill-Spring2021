@@ -1,0 +1,223 @@
+This assignment was locked May 26 at 11:59pm.
+Objective
+Demonstrate an understanding of:
+
+List creation
+List comprehensions
+Custom exceptions
+Tuples
+Built-in functions: min(), max(), sum(), len()
+Specification
+Start with your code from assignment six.
+
+DataSet Class
+Add the following to your DataSet class:
+
+EmptyDatasetError exception
+
+This custom exception will be raised when a method is asked to do calculation on the dataset, but no data is loaded.
+
+NoMatchingItems exception
+
+This custom exception will be raised when _cross_table_statistics (below) does not find any data that matches both descriptors.
+
+_cross_table_statistics(self, descriptor_one: str, descriptor_two: str)
+
+The two parameters of this function (descriptor_one and descriptor_two) describe a borough and property type.  Use a list comprehension to create a list of rents for all properties that match both descriptors.   If there are no properties loaded in self._data, raise an EmptyDatasetError exception.  If no properties matched both descriptors, raise a NoMatchingItems exception..  Otherwise return the minimum, average, and maximum rent as a tuple of floats.
+
+load_default_data(self)
+
+Later in the course we will load data from a file.  For now we just want some data to play with.  This function should simply assign the following data to self._data as a list of tuples.
+
+Borough
+
+Type
+
+Rate per Night
+
+Staten Island
+
+Private room
+
+70
+
+Brooklyn
+
+Private room
+
+50
+
+Bronx
+
+Private room
+
+40
+
+Brooklyn
+
+Entire home / apt
+
+150
+
+Manhattan
+
+Private room
+
+125
+
+Manhattan
+
+Entire home / apt
+
+196
+
+Brooklyn
+
+Private room
+
+110
+
+Manhattan
+
+Entire home / apt
+
+170
+
+Manhattan
+
+Entire home / apt
+
+165
+
+Manhattan
+
+Entire home / apt
+
+150
+
+Manhattan
+
+Entire home / apt
+
+100
+
+Brooklyn
+
+Private room
+
+65
+
+Queens
+
+Entire home / apt
+
+350
+
+Manhattan
+
+Private room
+
+98
+
+Brooklyn
+
+Entire home / apt
+
+200
+
+Brooklyn
+
+Entire home / apt
+
+150
+
+Brooklyn
+
+Private room
+
+99
+
+Brooklyn
+
+Private room
+
+120
+
+
+
+Modifications to Existing Code
+There are no modifications needed for this assignment
+
+Unit Test
+Our code for this assignment will not generate any different output if you run main(), so create a simple unit test function for _cross_table_statistics.  All of these items should be tested within that function, and the function should report pass or fail for each.
+
+In your unit test, create an instance of the class DataSet.  I'll call it my_set here, you can choose whatever name you like.
+Before calling my_set.load_default_data, call my_set._cross_table_statistics and ensure that it raises EmptyDatasetError.
+Next load the default data.
+Calculate the expected results of several calls by hand and compare the result with the return value of my_set._cross_table_statistics.  Include:
+A call with a match in the Borough column but an invalid Property Type (should raise NoMatchingItems exception)
+A call with a match in the Property Type column but an invalid  Borough (should raise NoMatchingItems exception)
+A call with valid entries for both columns but no match (should raise NoMatchingItems exception)
+A call that will match exactly one item in the table
+A call that will match more than one item in the table
+Any other important cases you can think of
+Be sure to include the code for your unit test in your homework submission.  In my solution, I just created a function called unit_test() and included it in the same file.
+
+Sample Run
+Your output can be different as long as it meets the criteria above.
+
+Testing _cross_table_staticstics
+Method Raises EmptyDataSet Error: Pass
+Invalid Property Type Raises NoMatchingItems Error: Pass
+Invalid Borough Raises NoMatchingItems Error: Pass
+No Matching Rows Raises NoMatchingItems Error: Pass
+One Matching Row Returns Correct Tuple: Pass
+Multiple Matching Rows Returns Correct Tuple: Pass
+
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Unit test is not complete
+
+Docstrings are missing
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Unit test completed but might not identify issues with bad code.
+
+Docstrings are present but might not follow conventions
+
+Sample run and unit test results included
+
+Program produces correct output with no errors.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Property methods are correctly used throughout the code, including in the unit test
+
+Unit test checks all of the situations listed.  Unit test prints failures if the code is incorrect
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run and unit test results included
+
+
+
