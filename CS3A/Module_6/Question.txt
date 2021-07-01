@@ -1,0 +1,154 @@
+This assignment was locked May 19 at 11:59pm.
+Objective
+Demonstrate an understanding of:
+
+Class design and object creation
+methods
+constructor (__init__ method)
+properties
+raising exceptions
+Specification
+Start with your code from assignment five.
+
+DataSet Class
+Add a class called DataSet.  The class should have these attributes and methods:
+
+copyright attribute
+
+Create a class attribute called copyright, that starts out assigned to the string "No copyright has been set". Be sure to watch the "Class Attributes" video and understand the difference between a class attribute and an instance attribute.
+
+header property
+
+Our class will include an instance attribute self._header, which is a friendly message that will be printed along with the menu of options.  We will need two methods to manage header property, a getter and a setter.  The setter should check whether the proposed header is a string, and has length less than or equal to 30.  If so, set the instance attribute self._header to the proposed header.  Otherwise raise a ValueError exception and do not change self._header.  The getter should simply return self._header.  Be sure to use the @property and @header.setter decorators on these methods.  Important:  getters and setters never print anything to the console, and never ask the user to enter any values directly.  Your functions should not contain any print() or input() functions.
+
+__init__() method:
+
+The constructor, or __init__() method, should take a single string parameter named "header" which defaults to the empty string.
+
+The constructor should create a private instance attribute, self._data.  self._data will eventually contain the actual Airbnb data that our application will use, but for now we will set it to None.
+
+self._header should be set to the value of the header parameter.  We won't do this directly, though.  We want to take advantage of the setter we have created, in case the user passes an illegal value.  So set self.header = header.  The setter may raise an exception, so be sure to catch the exception and set self._header to the empty string if the call fails.  Note that our project code will not make use of the header parameter, so we will do some separate testing to make sure that if the user enters a valid header, it is stored correctly, and if the user enters an invalid header, the header is set to the empty string.
+
+Modifications to Existing Code
+menu() function
+
+Add a parameter dataset of type DataSet in the function signature for menu().  The air_bnb argument that you added in the main() function will be passed to this parameter.
+
+Access the copyright attribute of dataset to print your copyright notice once (not in the loop)
+Using the dataset object, print the header at the beginning of the loop in menu(), so it always shows before print_menu().
+main() function
+
+Inside your main() function, do these steps in order:
+
+Set the copyright class attribute to a copyright message that includes your name.  Make sure you are able to do this before creating your DataSet object.
+create an instance of DataSet called air_bnb, without passing any header.
+Create a loop in the main function to ask the user for a header until a valid header is entered.   You have already written the code to check for a valid header, so don't duplicate that code here.  Just make use of the fact that the setter you wrote will raise an exception when a bad header is entered.  Keep asking until no exception is raised.
+Pass air_bnb as an argument in the call to menu()
+
+
+Unit Test
+In addition to running your program and posting sample code, create a simple unit test for the header and copyright properties:
+
+Repeatedly create objects of type DataSet.  Using the property getter we created, check header to make sure this behaves when:
+The object is created with no header argument.  In this case the header should default to the empty string.
+The object is created with a valid header argument.  In this case the header should be set as requested.
+The object is created with an invalid header argument.  In this case the header should default to the empty string.
+Using one of the objects you created, now test the setter.  Verify that this behaves properly when:
+User provides a valid header.  In this case the header should be changed.
+User provides an invalid header.  In this case the header should not be changed.
+Be sure to include the code for your unit test in your homework submission.  In my solution, I just created a function called unit_test() and included it in the same file.
+
+Sample Run
+There are two sample runs.  The first shows the functioning of the unit test.  The second shows the output of the running program in its current state.
+
+Your output can be different as long as it meets the criteria above.
+
+Testing constructor with default parameter: Pass
+Testing constructor with valid header argument: Pass
+Testing constructor with invalid header argument: Pass
+Testing setter with valid assignment: Pass
+Testing setter with invalid assignment: Pass
+Setting DataSet.copyright = 'copyright Eric Reed'
+Checking that I can access this using DataSet.copyright
+Pass
+Checking that I can access this after created a test object using test.copyright
+Pass
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+What is your home currency?GBP
+Enter a header for the menu:
+Welcome to the airBNB Database
+Options for converting from GBP:
+GBP       USD       EUR       CAD       CHF       NZD       AUD       JPY
+10.00     12.50     11.25     17.50     11.88     20.75     20.25     1349.00
+20.00     25.00     22.50     35.00     23.75     41.50     40.50     2698.00
+30.00     37.50     33.75     52.50     35.62     62.25     60.75     4047.00
+40.00     50.00     45.00     70.00     47.50     83.00     81.00     5396.00
+50.00     62.50     56.25     87.50     59.38     103.75    101.25    6745.00
+60.00     75.00     67.50     105.00    71.25     124.50    121.50    8094.00
+70.00     87.50     78.75     122.50    83.12     145.25    141.75    9443.00
+80.00     100.00    90.00     140.00    95.00     166.00    162.00    10792.00
+90.00     112.50    101.25    157.50    106.88    186.75    182.25    12141.00
+
+copyright Eric Reed
+Welcome to the airBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice?
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Unit test is not complete
+
+Docstrings are missing
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Unit test completed but might not identify issues with bad code.
+
+Docstrings are present but might not follow conventions
+
+Sample run and unit test results included
+
+Program produces correct output with no errors.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Property methods are correctly used throughout the code, including in the unit test
+
+Unit test checks all of the situations listed.  Unit test prints failures if the code is incorrect
+
+Modifications to previous code are completed
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run and unit test results included
+
+
+
