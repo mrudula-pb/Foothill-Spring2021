@@ -1,0 +1,41 @@
+Specification
+Start with your code from Assignment Nine.
+
+DataSet Class
+_table_statistics(self, row_category: Categories, label: str)
+
+Given a category from the Categories Enum, and a string matching one of the items in that category, calculate and return the filtered minimum, maximum and average rent for the properties in that category.  If there are no matching properties after applying the filter, raise our NoMatchingItems custom exception.
+
+How do we filter the values?  Let's demonstrate by example.
+
+Suppose _active_labels[Categories.PROPERTY_TYPE] = {"Private Room"}.  In other words, "Entire home / apt" has been filtered out.
+
+If we call _table_statistics(Categories.LOCATION, "Manhattan"), we are asking for the min, avg and max rent for Manhattan.  But only for properties that match "Private Room".   There are only two matching properties in our default data.  We should get back a tuple (98, 111.5, 125).
+
+It might be a good idea to test using this example.
+
+Because this method is intended private, you do not need to provide any protection from bad arguments.
+
+display_field_table(self, rows: Categories)
+
+Raise EmptyDatasetError if no data is loaded.
+
+Notice that one of the two categories was passed.  Display a table of the minimum, maximum and average rent for each item in that category.  The data presented should be filtered.  Print out the labels that are currently active, and  use _table_statistics() to gather the data.
+Private room (40, 86.33333333333333, 125)
+To find Statistics:  Entire home / apt
+Entire home / apt (100, 181.22222222222223, 350)
+
+
+Modifications to Existing Code
+menu() function
+
+We have now implemented items 4 and 5 from our menu.  Adjust the menu() function to call display_field_table()  with the appropriate arguments.   Catch any EmptyDatasetError that is raised and provide an appropriate message to the user.
+
+
+
+Sample Run
+Your sample run should show that menu items 4 through 7 function correctly with and without a dataset loaded, and using various filters.
+
+Your output can be different as long as it meets the criteria above.  Be sure to check that your numerical values match those below.  I have included a large sample run here.
+
+I strongly recommend that you go through each of the same steps that I have in the sample run and make sure your code provides the same options and information.
