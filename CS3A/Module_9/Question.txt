@@ -1,0 +1,241 @@
+This assignment was locked Jun 9 at 11:59pm.
+DataSet Class
+We are going to add two methods to our DataSet class to make use of the work we did in the previous assignment.
+
+New Attribute: self._active_labels
+In the last assignment we created a dictionary object called self._labels.  There are two entries,:"Property Type", a set that holds every unique property type string that appears in self._data, and "Location", a set that holds every unique location that appears in self._data.
+
+This week we will introduce the ability to filter out specific property types or locations from our results.  To do so, we will introduce a similar dictionary called self._active_labels.  This dictionary will start out identical to self._labels, but we will give the user the opportunity to make some labels "inactive" by removing them from the _active_labels set.
+
+__init__() method:
+initialize self._active_labels, using the same scheme we used for self._labels.
+
+_initialize_sets(self)
+We will add to this method, setting up _active_labels in exactly the same way as self._labels...and in fact it will hold exactly the same information in the beginning.  It is very important not to use an assignment operator or copy() to do this, because dictionaries and sets are mutable objects.  If we do not have distinct object for both dictionaries and all four sets, then we will run into trouble because making a change in one may cause an unintended change in another.
+
+If you want to be sure you did this part right, you can print _labels or _active_labels just before exiting the function.  You should see:
+
+{<Categories.LOCATION: 0>: {'Bronx', 'Manhattan', 'Staten Island', 'Brooklyn', 'Queens'}, <Categories.PROPERTY_TYPE: 1>: {'Private room', 'Entire home / apt'}}
+And you can print the id of _labels and _active_labels using, for example, print(id(_labels), id(_active_labels)).  Make sure the id's are different.
+
+Remember, this output should be the result of your code going through self._data to find these values - you should not hard-code the dictionaries.
+
+get_labels(self, category: Categories)
+Returns a list of the items in _labels[category].
+
+get_active_labels(self, category: Categories)
+Returns a list of the items in _active_labels[category].
+
+toggle_active_label(self, category: Categories, descriptor: str)
+This public method will add or remove labels from _active_labels, allowing the user to filter out certain property types or locations.
+
+If the passed descriptor is not a label in _labels[category], raise KeyError.   Otherwise:
+
+add descriptor to _active_labels[category] if descriptor is not in the set or...
+remove descriptor from _active_labels[category] if descriptor is in the set.
+
+Module Level Function
+manage_filters(dataset: DataSet, category: DataSet.Categories)
+Using the DataSet methods get_labels(), get_active_labels(), and toggle_active_label():
+
+Print a menu-like list of all the labels for the given category
+Indicate which ones are currently active (i.e. the string exists in dataset._active_labels[category]
+Allow the user to change a label from active to inactive or from inactive to active
+Loop until the user has finished making their choices
+See the sample run for an idea of how to present this.
+
+Note the following requirements:
+
+You must use enumerate to generate the menu items, and start with item 1
+You must use the public getter and setter methods for Dataset.  Do not access the data directly.
+Sample Run
+
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+What is your home currency?CAD
+Enter a header for the menu:
+AirBNB
+Options for converting from CAD:
+CAD       USD       EUR       GBP       CHF       NZD       AUD       JPY
+10.00     7.14      6.43      5.71      6.79      11.86     11.57     770.86
+20.00     14.29     12.86     11.43     13.57     23.71     23.14     1541.71
+30.00     21.43     19.29     17.14     20.36     35.57     34.71     2312.57
+40.00     28.57     25.71     22.86     27.14     47.43     46.29     3083.43
+50.00     35.71     32.14     28.57     33.93     59.29     57.86     3854.29
+60.00     42.86     38.57     34.29     40.71     71.14     69.43     4625.14
+70.00     50.00     45.00     40.00     47.50     83.00     81.00     5396.00
+80.00     57.14     51.43     45.71     54.29     94.86     92.57     6166.86
+90.00     64.29     57.86     51.43     61.07     106.71    104.14    6937.71
+No data loaded
+No copyright has been set
+
+AirBNB
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 6
+Please Load a Dataset First
+
+AirBNB
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 8
+
+AirBNB
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 6
+The following labels are in the dataset:
+1: Bronx                ACTIVE
+2: Brooklyn             ACTIVE
+3: Queens               ACTIVE
+4: Staten Island        ACTIVE
+5: Manhattan            ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.1
+The following labels are in the dataset:
+1: Bronx                INACTIVE
+2: Brooklyn             ACTIVE
+3: Queens               ACTIVE
+4: Staten Island        ACTIVE
+5: Manhattan            ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.2
+The following labels are in the dataset:
+1: Bronx                INACTIVE
+2: Brooklyn             INACTIVE
+3: Queens               ACTIVE
+4: Staten Island        ACTIVE
+5: Manhattan            ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.1
+The following labels are in the dataset:
+1: Bronx                ACTIVE
+2: Brooklyn             INACTIVE
+3: Queens               ACTIVE
+4: Staten Island        ACTIVE
+5: Manhattan            ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.
+
+AirBNB
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 7
+The following labels are in the dataset:
+1: Entire home / apt    ACTIVE
+2: Private room         ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.2
+The following labels are in the dataset:
+1: Entire home / apt    ACTIVE
+2: Private room         INACTIVE
+Please select an item to toggle or enter a blank line when you are finished.3
+Please enter a number from the list
+The following labels are in the dataset:
+1: Entire home / apt    ACTIVE
+2: Private room         INACTIVE
+Please select an item to toggle or enter a blank line when you are finished.2
+The following labels are in the dataset:
+1: Entire home / apt    ACTIVE
+2: Private room         ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.1
+The following labels are in the dataset:
+1: Entire home / apt    INACTIVE
+2: Private room         ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.
+
+AirBNB
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 9
+Goodbye!  Thank you for using the database
+
+Process finished with exit code 0
+
+
+Rubric
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Docstrings are missing
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Output may have slight formatting errors (like, off by one space)
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Docstrings are present but might not follow conventions
+
+Sample run included
+
+Program produces correct output with no errors.  Values must match those shown in the sample run.
+
+enumerate function used appropriately in manage_filters().
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Table is well formatted using f-strings
+
+Property methods are correctly used throughout the code
+
+Enums and Sets are used where appropriate
+
+Modifications to previous code are completed
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run included
+
+
+
+
