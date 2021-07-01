@@ -1,4 +1,4 @@
-Below are the corses enrolled in Foothill College for Spring2021
+Below are the courses enrolled in Foothill College for Spring2021
 
 C S 3A - OBJECT-ORIENTED PROGRAMMING METHODOLOGIES IN PYTHON
 
