@@ -1,0 +1,125 @@
+This assignment was locked May 12 at 11:59pm.
+Objective
+
+Demonstrate an understanding of:
+
+Variable Scope
+Globals
+f-strings
+for loops
+Use of "in"
+Specification
+
+Start with your code from assignment four.
+
+At the module level, create a global variable called home_currency and set it to the empty string.
+
+Create a function called currency_options() with a string parameter base_curr.  The function should print out a table of options for converting base_curr to all other currencies.   Use quantities of the base currency from 10 to 90 and use the currency_converter() function to calculate all of the other currency values.  Be sure to look at the sample run below for an example.
+
+Note that you must use f-strings to generate the lines of the table,
+Use a for loop to print the header line.  Do not hard code the header.  Hint:  If you have typed 'EUR' anywhere in your currency_options function, you have hard-coding.
+You must use a for loop instead of writing a separate line of code for each of the nine lines.  Do not hard code the lines.  Hint again:  If you have typed 'EUR' anywhere in your currency_options function, you have hard-coding.
+Do not use the home_currency global anywhere in the currency_options() function.  home_currency should not appear anywhere in this function, use base_curr instead.
+The base_curr must appear as the first column, and should not be duplicated in the table.  This will require use of a nested for loop, and the continue keyword might come in handy here.
+The columns of the table must be evenly spaced.
+You can choose to left-justify or right-justify the columns, but they must line up.
+All currency values should have two decimals of precision throughout the table (25.50 not 25.5 or 26).
+Inside the main() function, before the menu is called, ask the user for their home currency.  Do this in a loop until the user enters a valid string that is one of the entries in the conversions dictionary.   Assign the user response to the home_currency global (be careful not to shadow the original home_currency name)
+
+Finally, modify the menu() function so that the currency table is printed before entering the loop that manages the menu.  To be clear:
+
+currency_options() should be called from menu(), not from main().
+The currency table should be printed just once during a run of the program.
+No need for a unit test for this one, but you should include sample code that demonstrates the user entering a bad currency string and then a good one, as well as the printing of the table before the menu.
+
+Sample Run (your output can be different as long as it meets the criteria above)
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+What is your home currency?MON
+What is your home currency?GBP
+Options for converting from GBP:
+GBP       USD       EUR       CAD       CHF       NZD       AUD       JPY
+10.00     12.50     11.25     17.50     11.88     20.75     20.25     1349.00
+20.00     25.00     22.50     35.00     23.75     41.50     40.50     2698.00
+30.00     37.50     33.75     52.50     35.62     62.25     60.75     4047.00
+40.00     50.00     45.00     70.00     47.50     83.00     81.00     5396.00
+50.00     62.50     56.25     87.50     59.38     103.75    101.25    6745.00
+60.00     75.00     67.50     105.00    71.25     124.50    121.50    8094.00
+70.00     87.50     78.75     122.50    83.12     145.25    141.75    9443.00
+80.00     100.00    90.00     140.00    95.00     166.00    162.00    10792.00
+90.00     112.50    101.25    157.50    106.88    186.75    182.25    12141.00
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 1
+Average rent functionality is not implemented yet
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 9
+Goodbye!  Thank you for using the database
+
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+fstrings not used
+
+Docstrings are missing
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+fstrings are used to format the table
+
+Table may have minor formatting issues
+
+Docstrings are present but might not follow conventions
+
+Sample run included
+
+Program produces correct output with no errors.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+fstrings are used to format the table
+
+Columns are lined up.  Floats have two digits of precision
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run included
+
+
+
