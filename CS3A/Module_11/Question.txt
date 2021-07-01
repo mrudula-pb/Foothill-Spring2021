@@ -1,0 +1,289 @@
+This assignment was locked Jun 25 at 11:59pm.
+Note
+Before beginning the project, download AB_NYC_2019.csv download
+
+Place the file in your PyCharm projects folder, the same folder that contains your code.
+
+Objective
+Demonstrate an understanding of:
+
+File I/O
+Unit Tests
+Specification
+Create a new global string object called filename.  Set filename equal to:
+
+'./AB_NYC_2019.csv' (for Mac/Linux)
+'AB_NYC_2019.csv' (for Windows)
+Create a new method in the DataSet class called load_file().  This method should load all the data from the Airbnb data file into self._data.  Use the global filename object to specify the file to open.  The function should report how many lines are loaded.
+
+Update option 8 in the menu to call load_file() instead of load_default_data().
+
+Optional - Extra Credit (5 points):
+Create a separate file and write a unit test using the unittest module.  At a minimum, verify that 48895 lines of Airbnb data were loaded.  Your unit test must use the techniques in the Advanced Unit Testing module.
+
+Sample Run
+Your sample run should be used to verify that all properties are loaded.  It is sufficient to load the file and display the data from menu option 1.  You must verify that the calculations made by your code match the results below.  Also make sure your tables still look good!
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+What is your home currency?AUD
+Enter a header for the menu:
+Final Airbnb Database
+Options for converting from AUD:
+AUD       USD       EUR       CAD       GBP       CHF       NZD       JPY
+10.00     6.17      5.56      8.64      4.94      5.86      10.25     666.17
+20.00     12.35     11.11     17.28     9.88      11.73     20.49     1332.35
+30.00     18.52     16.67     25.93     14.81     17.59     30.74     1998.52
+40.00     24.69     22.22     34.57     19.75     23.46     40.99     2664.69
+50.00     30.86     27.78     43.21     24.69     29.32     51.23     3330.86
+60.00     37.04     33.33     51.85     29.63     35.19     61.48     3997.04
+70.00     43.21     38.89     60.49     34.57     41.05     71.73     4663.21
+80.00     49.38     44.44     69.14     39.51     46.91     81.98     5329.38
+90.00     55.56     50.00     77.78     44.44     52.78     92.22     5995.56
+
+Copyright 2021 Eric Reed
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 1
+Please Load a Dataset First
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 8
+48895 lines loaded
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 1
+               Entire home/apt     Private room        Shared room
+Bronx          $ 127.51            $ 66.79             $ 59.80
+Brooklyn       $ 178.33            $ 76.50             $ 50.53
+Manhattan      $ 249.24            $ 116.78            $ 88.98
+Queens         $ 147.05            $ 71.76             $ 69.02
+Staten Island  $ 173.85            $ 62.29             $ 57.44
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 2
+               Entire home/apt     Private room        Shared room
+Bronx          $ 28.00             $ 0.00              $ 20.00
+Brooklyn       $ 0.00              $ 0.00              $ 0.00
+Manhattan      $ 0.00              $ 10.00             $ 10.00
+Queens         $ 10.00             $ 10.00             $ 11.00
+Staten Island  $ 48.00             $ 20.00             $ 13.00
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 3
+               Entire home/apt     Private room        Shared room
+Bronx          $ 1000.00           $ 2500.00           $ 800.00
+Brooklyn       $ 10000.00          $ 7500.00           $ 725.00
+Manhattan      $ 10000.00          $ 9999.00           $ 1000.00
+Queens         $ 2600.00           $ 10000.00          $ 1800.00
+Staten Island  $ 5000.00           $ 300.00            $ 150.00
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 4
+The following data are from properties matching these criteria:
+- Entire home/apt
+- Private room
+- Shared room
+                    Minimum             Average             Maximum
+Bronx               $ 0.00              $ 87.50             $ 2500.00
+Brooklyn            $ 0.00              $ 124.38            $ 10000.00
+Manhattan           $ 0.00              $ 196.88            $ 10000.00
+Queens              $ 10.00             $ 99.52             $ 10000.00
+Staten Island       $ 13.00             $ 114.81            $ 5000.00
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 5
+The following data are from properties matching these criteria:
+- Bronx
+- Brooklyn
+- Manhattan
+- Queens
+- Staten Island
+                    Minimum             Average             Maximum
+Entire home/apt     $ 0.00              $ 211.79            $ 10000.00
+Private room        $ 0.00              $ 89.78             $ 10000.00
+Shared room         $ 0.00              $ 70.13             $ 1800.00
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 6
+The following labels are in the dataset:
+1: Brooklyn             ACTIVE
+2: Manhattan            ACTIVE
+3: Staten Island        ACTIVE
+4: Queens               ACTIVE
+5: Bronx                ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.3
+The following labels are in the dataset:
+1: Brooklyn             ACTIVE
+2: Manhattan            ACTIVE
+3: Staten Island        INACTIVE
+4: Queens               ACTIVE
+5: Bronx                ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.4
+The following labels are in the dataset:
+1: Brooklyn             ACTIVE
+2: Manhattan            ACTIVE
+3: Staten Island        INACTIVE
+4: Queens               INACTIVE
+5: Bronx                ACTIVE
+Please select an item to toggle or enter a blank line when you are finished.
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 5
+The following data are from properties matching these criteria:
+- Bronx
+- Brooklyn
+- Manhattan
+                    Minimum             Average             Maximum
+Entire home/apt     $ 0.00              $ 217.95            $ 10000.00
+Private room        $ 0.00              $ 93.29             $ 9999.00
+Shared room         $ 0.00              $ 70.48             $ 1000.00
+
+Final Airbnb Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice?
+
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Docstrings are missing
+
+No sample run, or data does not match provided sample run.
+
+Program runs with no errors, output is close to spec.
+
+Output may have slight formatting errors (like, off by one space)
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Docstrings are present but might not follow conventions
+
+Sample run included and data matches provided sample run.
+
+Program produces correct output with no errors.  Values must match those shown in the sample run.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Property methods are correctly used throughout the code
+
+Modifications to previous code are completed
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run included and data matches provided sample run.
+
+
+
