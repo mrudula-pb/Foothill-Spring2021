@@ -1,0 +1,97 @@
+Objective
+
+Demonstrate an understanding of:
+
+Dictionaries
+Arguments, Parameters and Functional Returns
+Unit Testing
+Specification
+
+Start with your code from assignment three.
+
+Create a global dictionary called conversions that has a string representing a type of currency as a key, and a float representing the conversion rate from US dollars as a value (we won't use the full name in the first column below).  Feel free to add more currencies, but for the listed currencies use these exact values:
+
+Key	Value
+US Dollar	USD	1
+Euro	EUR	.9
+Canadian Dollar	CAD	1.4
+British Pound	GBP	.8
+Swiss Franc	CHF	.95
+New Zealand Dollar	NZD	1.66
+Australian Dollar	AUD	1.62
+Japanese Yen	JPY	107.92
+Create a function called currency_converter() that calculates the value after converting money from one currency to another.  currency_converter() has three parameters.  Use type hints and make sure the parameters are named exactly as listed.
+
+quantity is a float and represents the amount of money in the original currency
+source_curr is a string and represents the original currency
+target_curr is a string and represents the currency after exchange
+Hint: Convert source_curr to USD, and then to target_curr.
+
+For this assignment you will not modify main().  Instead, create a function called unit_test() that will check the following results from currency_converter()
+
+User enters invalid source currency should raise KeyError
+User enters invalid target currency should raise KeyError
+Correct conversion from USD to another currency with quantity > 1
+Correct conversion from another currency to USD with quantity > 1
+Correct conversion between two currencies other than USD with quantity > 1 (Hint: most conversions will come out messy, try starting with 2.8 CAD)
+The last three tests will require you to calculate the expected value by hand, and compare the result from currency_converter with your hand-calculated result.  Each test should report whether it passed or failed.
+
+Other Requirements
+
+There should be a module level docstring, and a docstring for every function.
+
+Follow the PEP-8 conventions you have learned so far.
+
+I will run your unit test against some code that is not correct.  Your unit test must report "Fail" for any of the five tests that do not pass.
+
+Your sample run should show the result of your unit test.
+
+Sample Run (your output can be different as long as it meets the criteria above)
+
+PASS: Invalid Source Currency Raises KeyError
+PASS: Invalid Target Currency Raises KeyError
+PASS: Conversion from USD to GBP
+PASS: Conversion from CAD to USD
+PASS: Conversion from EUR to CAD
+
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Unit test fails to identify some errors
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Docstrings are missing
+
+No sample run
+
+Program and unit test run with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Docstrings are present but might not follow conventions
+
+Sample run included
+
+Program and unit test produce correct output with no errors.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above, including use of type hints
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run included showing pass for all tests.
+
+
+
