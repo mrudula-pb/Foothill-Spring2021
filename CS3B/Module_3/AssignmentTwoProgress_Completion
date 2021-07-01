@@ -1,0 +1,186 @@
+Objective
+demonstrate an understanding of:
+
+Deque
+Random
+Specification
+We will complete our NNData class by providing some accessors and some methods to set up internal data.
+
+Methods inside NNData:
+Changes to __init__()
+Our constructor will provide values for the following attributes:
+
+self._train_indices should default to an empty list.  We will eventually use this to point to the items in our dataset that make up the training set
+self._test_indices should default to an empty list.  We will eventually use this to point to the items in our dataset that make up the testing set
+self._train_pool should default to an empty deque.  We will eventually use this to keep track of which training items have not yet been seen in a particular training epoch
+self._test_pool should default to an empty deque.  We will eventually use this to keep track of which training items have not yet been seen in a testing run
+Add a call to split_set() at the very end of __init__(), after the call to load_data().  split_set() is described below and helps get the attributes above set up correctly.
+split_set(self, new_train_factor=None)
+This public method will take one parameter, new_train_factor, that should default to None.
+
+If new_train_factor is not None, use it to set self._train_factor.  Remember to use percentage_limiter to make sure the value stays within range.
+Find and store the number of examples that are loaded (the size of self._features or self._labels).
+Calculate and store the number of examples that should be used for training
+Set up self._train_indices and self._test_indices.  These lists will be used as indirect indices for our example data.  You may wish to review the video about indirect indices.  The indices in self._train_indices should be randomly generated, and the number of indices should be equal to the number of examples used for training, calculated above.  self._test_indices should contain the indices that did not appear in self._train_indices.
+Sort the two lists
+prime_data(self, target_set=None, order=None)
+This method will load one or both deques to be used as indirect indices.
+
+The target_set parameter will dictate whether we are loading self._train_pool (if target_set is NNData.Set.TRAIN) or self._test_pool (if target_set is NNData.Set.TEST).  If target_set is none, load both pools.
+Load the pools by copying all data from self._train_indices and/or self._test_indices.
+If order is NNData.Order.RANDOM, shuffle the pool(s) that you just created.  If order is None or NNData.Order.SEQUENTIAL, leave the pool(s) in order.
+get_one_item(self, target_set=None)
+This method will return exactly one feature/label pair as a tuple.
+
+If target_set is NNData.Set.TRAIN or target_set is None, then use self._train_pool to find the pair.  If target_set is NNData.Set.TEST, use self._test_pool.
+Remember that these deques are used as indirect indices into the actual example data.  We don't want to return the value from the deque, we want to use the value from the deque to return the correct value from the two numpy arrays.
+Use "popleft" so that the index is not reused
+Return None if there are no indices left in the chose target_set.
+number_of_samples(self, target_set=None)
+This method returns the total number of testing examples (if target set is NNData.Set.TEST), or the total number of training examples (if the target set is NNData.Set.TRAIN), or both combined (if the target set is None).
+
+pool_is_empty(self, target_set=None)
+This method returns True if the target_set deque (self._train_pool or self._test_pool) is empty, or False otherwise.  If target_set is None, use the train pool.
+
+Module Level Functions
+unit_test()
+Run the unit test below, and fix any errors.  Add any testing that you feel is appropriate.  Remember, even if the unit test reports no errors, you are responsible to ensure that your code is correct and complete.
+
+def unit_test():
+    errors = False
+    try:
+        # Create a valid small and large dataset to be used later
+        x = [[i] for i in range(10)]
+        y = x
+        our_data_0 = NNData(x, y)
+        x = [[i] for i in range(100)]
+        y = x
+        our_big_data = NNData(x, y, .5)
+
+        # Try loading lists of different sizes
+        y = [[1]]
+        try:
+            our_bad_data = NNData()
+            our_bad_data.load_data(x, y)
+            raise Exception
+        except DataMismatchError:
+            pass
+        except:
+            raise Exception
+
+        # Create a dataset that can be used to make sure the
+        # features and labels are not confused
+        x = [[1.0], [2.0], [3.0], [4.0]]
+        y = [[.1], [.2], [.3], [.4]]
+        our_data_1 = NNData(x, y, .5)
+
+    except:
+        print("There are errors that likely come from __init__ or a "
+              "method called by __init__")
+        errors = True
+
+    # Test split_set to make sure the correct number of examples are in
+    # each set, and that the indices do not overlap.
+    try:
+        our_data_0.split_set(.3)
+        print(f"Train Indices:{our_data_0._train_indices}")
+        print(f"Test Indices:{our_data_0._test_indices}")
+
+        assert len(our_data_0._train_indices) == 3
+        assert len(our_data_0._test_indices) == 7
+        assert (list(set(our_data_0._train_indices +
+                         our_data_0._test_indices))) == list(range(10))
+    except:
+        print("There are errors that likely come from split_set")
+        errors = True
+
+    # Make sure prime_data sets up the deques correctly, whether
+    # sequential or random.
+    try:
+        our_data_0.prime_data(order=NNData.Order.SEQUENTIAL)
+        assert len(our_data_0._train_pool) == 3
+        assert len(our_data_0._test_pool) == 7
+        assert our_data_0._train_indices == list(our_data_0._train_pool)
+        assert our_data_0._test_indices == list(our_data_0._test_pool)
+        our_big_data.prime_data(order=NNData.Order.RANDOM)
+        assert our_big_data._train_indices != list(our_big_data._train_pool)
+        assert our_big_data._test_indices != list(our_big_data._test_pool)
+    except:
+        print("There are errors that likely come from prime_data")
+        errors = True
+
+    # Make sure get_one_item is returning the correct values, and
+    # that pool_is_empty functions correctly.
+    try:
+        our_data_1.prime_data(order=NNData.Order.SEQUENTIAL)
+        my_x_list = []
+        my_y_list = []
+        while not our_data_1.pool_is_empty():
+            example = our_data_1.get_one_item()
+            my_x_list.append(list(example[0]))
+            my_y_list.append(list(example[1]))
+        assert len(my_x_list) == 2
+        assert my_x_list != my_y_list
+        my_matched_x_list = [i[0] * 10 for i in my_y_list]
+        assert my_matched_x_list == my_x_list
+        while not our_data_1.pool_is_empty(our_data_1.Set.TEST):
+            example = our_data_1.get_one_item(our_data_1.Set.TEST)
+            my_x_list.append(list(example[0]))
+            my_y_list.append(list(example[1]))
+        assert my_x_list != my_y_list
+        my_matched_x_list = [i[0] * 10 for i in my_y_list]
+        assert my_matched_x_list == my_x_list
+        assert set(i[0] for i in my_x_list) == set(i[0] for i in x)
+        assert set(i[0] for i in my_y_list) == set(i[0] for i in y)
+    except:
+        print("There are errors that may come from prime_data, but could "
+              "be from another method")
+        errors = True
+
+    # Summary
+    if errors:
+        print("You have one or more errors.  Please fix them before "
+              "submitting")
+    else:
+        print("No errors were identified by the unit test.")
+        print("You should still double check that your code meets spec.")
+        print("You should also check that PyCharm does not identify any "
+              "PEP-8 issues.")
+Other Requirements
+
+Your code must be elegant.  This means it should follow PEP-8 guidelines, all names should be descriptive, there should not be unnecessary duplication of code, and there should not be any code that is more complex than it needs to be.
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Code is elegant
+
+Sample run included
+
+Program produces correct output with no errors.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Code is elegant
+
+Sample run included
+
+
+
