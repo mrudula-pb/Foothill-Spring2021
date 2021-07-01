@@ -1,0 +1,228 @@
+This assignment was locked Jun 2 at 11:59pm.
+Objective
+Demonstrate an understanding of:
+
+Enum Class
+Sets
+Deep and Shallow Copies
+Specification
+There are a lot of details to deal with here.  Take each bit one at a time, and ask lots of questions.  Start with your code from Assignment Seven.
+
+Enum Classes
+
+We want to create two Enum classes.  Enum is not built-in, so, we need to import Enum from the enum package.  The first Enum class, named Categories,  will be used to distinguish the two categorical variables we have in our dataset.  The members should be called LOCATION and PROPERTY_TYPE.. The second, Stats, will be used to select which statistic to display in the display_cross_table() method.  The members should be called MIN, AVG, and MAX.
+
+New Attribute: self._labels
+
+We will write code for these attributes in __init__(), _initialize_sets(), and display_cross_table().
+
+This attribute is a dictionary object.  For each entry, the key will be one of the Categories we just defined.  The value will be a set of the labels we find in the location and property type columns of the data we loaded in assignment seven.  Of course, the labels in the location column will be associated with the Categories.LOCATION key, and the labels in the property type column will be associated with the Categories.PROPERTY_TYPE key.
+
+__init__() method:
+
+initialize our self._labels dictionary  It should have two entries with keys as described above, and with empty set objects as values.  You can create an empty set object using the built-in set() function.
+
+_initialize_sets(self)
+
+If there is no data loaded, raise EmptyDatasetError.  Otherwise...
+
+Our goal is to populate the self._labels dictionary with the appropriate labels from self._data.  Important: do not hard code these values.
+
+Remember that _labels has two keys, one for each Category.  Create a set that contains all of the labels for the location category (Bronx, Queens, etc) and associate it with the key Categories.LOCATION.   Repeat for property types.
+
+Remember, this output should be the result of your code going through self._data to find these values - you should not hard-code the dictionaries.
+
+display_cross_table(self, stat: Stats)
+
+If there is no data loaded, raise EmptyDatasetError.  Otherwise...
+
+The method will print a table of rates for each borough and property type.  The values printed will depend on whether stat is Stats.MIN, Stats.AVG or Stats.MAX.  The example below is the output for Stats.MAX.  You will use the _cross_table_statistics() method you coded in the last assignment to calculate the values that appear in the table.  You will use a for loop to iterate over the labels create the header row and column, and to access the data.  Be carfeul... the self._labels objects are sets and not guaranteed to maintain their order.  If the order changes between the time you print the header and the time you access the data, your values may not line up with the correct column headings.  Yes, it can happen that fast.  I started by copying both self._labels sets into lists, which guarantees that the order of the objects will remain fixed.  Then, use the lists instead of the sets throughout the rest of the function.  Use f-strings to format the table nicely.
+
+Note that your table may come out with rows and columns in a different order.
+
+               Private room     Entire home / apt
+Bronx          $ 40.00          $ N/A
+Manhattan      $ 125.00         $ 196.00
+Staten Island  $ 70.00          $ N/A
+Brooklyn       $ 120.00         $ 200.00
+Queens         $ N/A            $ 350.00
+
+
+Modifications to Existing Code
+load_default_data() method
+
+As soon as the default data is loaded, we want to initialize _labels.  So, call self._initialize_sets() at an appropriate spot in this method.
+
+menu() function
+
+We have now implemented the first three items from our menu.  Adjust the menu() function to display the cross table appropriately when the user selects 1, 2 or 3.  Catch any EmptyDatasetError that was raised and provide an appropriate message to the user.
+
+Also if the user selects option 8, call load_default_data().  We will be changing this later to allow the user to load any file.
+
+Sample Run
+Your sample run should show that menu items 1, 2 and 3 function correctly with and without a dataset loaded, and that function 8 correctly loads the dataset.
+
+Your output can be different as long as it meets the criteria above.  Be sure to check that your numerical values match those below.
+
+Please enter your name: Eric
+Hi Eric, welcome to Foothill's database project.
+What is your home currency?EUR
+Enter a header for the menu:
+AirBNB Database
+Options for converting from EUR:
+EUR       USD       CAD       GBP       CHF       NZD       AUD       JPY
+10.00     11.11     15.56     8.89      10.56     18.44     18.00     1199.11
+20.00     22.22     31.11     17.78     21.11     36.89     36.00     2398.22
+30.00     33.33     46.67     26.67     31.67     55.33     54.00     3597.33
+40.00     44.44     62.22     35.56     42.22     73.78     72.00     4796.44
+50.00     55.56     77.78     44.44     52.78     92.22     90.00     5995.56
+60.00     66.67     93.33     53.33     63.33     110.67    108.00    7194.67
+70.00     77.78     108.89    62.22     73.89     129.11    126.00    8393.78
+80.00     88.89     124.44    71.11     84.44     147.56    144.00    9592.89
+90.00     100.00    140.00    80.00     95.00     166.00    162.00    10792.00
+
+AirBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 1
+Please Load a Dataset First
+AirBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 8
+AirBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 1
+               Entire home / apt   Private room
+Staten Island  $ N/A               $ 70.00
+Bronx          $ N/A               $ 40.00
+Manhattan      $ 156.20            $ 111.50
+Queens         $ 350.00            $ N/A
+Brooklyn       $ 166.67            $ 88.80
+AirBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 2
+               Entire home / apt   Private room
+Staten Island  $ N/A               $ 70.00
+Bronx          $ N/A               $ 40.00
+Manhattan      $ 100.00            $ 98.00
+Queens         $ 350.00            $ N/A
+Brooklyn       $ 150.00            $ 50.00
+AirBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 3
+               Entire home / apt   Private room
+Staten Island  $ N/A               $ 70.00
+Bronx          $ N/A               $ 40.00
+Manhattan      $ 196.00            $ 125.00
+Queens         $ 350.00            $ N/A
+Brooklyn       $ 200.00            $ 120.00
+AirBNB Database
+Main Menu
+1 - Print Average Rent by Location and Property Type
+2 - Print Minimum Rent by Location and Property Type
+3 - Print Maximum Rent by Location and Property Type
+4 - Print Min/Avg/Max by Location
+5 - Print Min/Avg/Max by Property Type
+6 - Adjust Location Filters
+7 - Adjust Property Type Filters
+8 - Load Data
+9 - Quit
+What is your choice? 9
+Goodbye!  Thank you for using the database
+
+Process finished with exit code 0
+
+
+
+Rubric
+
+0 Points	1-10 Points maximum if any of the following are true	11-14 Points maximum if all of the following are true	15 Points if all of the following are true.
+Code does not run
+Code runs but output is significantly different from spec.  Occasional errors.
+
+Three or more PEP-8 issues identified by PyCharm
+
+Code does not follow spec
+
+Docstrings are missing
+
+No sample run
+
+Program runs with no errors, output is close to spec.
+
+Output may have slight formatting errors (like, off by one space)
+
+Up to two PEP-8 issues identified by PyCharm
+
+Code may deviate from spec in minor ways
+
+Docstrings are present but might not follow conventions
+
+Sample run included
+
+Program produces correct output with no errors.  Values must match those shown in the sample run.
+
+No PEP-8 issues identified by PyCharm
+
+Code follows specifications above
+
+Table is well formatted using f-strings
+
+Property methods are correctly used throughout the code
+
+Enums and Sets are established correctly and used where appropriate
+
+Modifications to previous code are completed
+
+Module level Docstring and Docstring for every function, as described in the modules
+
+Variable names are descriptive.
+
+Sample run included
+
+
+
